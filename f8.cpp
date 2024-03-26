@@ -20,5 +20,15 @@ int main(int argc, char** argv) {
 	strncpy(myArgs.directoryPath, argv[3], sizeof(myArgs.directoryPath) - 1);
 	strncpy(myArgs.filename, argv[4], sizeof(myArgs.filename) - 1);
 
+	FILE* file;
+	file = fopen(myArgs.filename, "w");
+	if (!file) {
+		printf("unable to create a the file");
+		return 0;
+	}
+	for (int i = 0; i < myArgs.howMany; i++) {
+		fprintf(file, "%s\n", myArgs.theText);
+	}
+	return 0;
 }
 
